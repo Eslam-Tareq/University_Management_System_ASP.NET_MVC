@@ -1,4 +1,4 @@
-# WebApplication1 - University Management System
+# University Management System
 
 A comprehensive ASP.NET Core MVC application designed for managing university data including students, departments, courses, and instructors. This project demonstrates modern web development practices with robust authentication, data validation, and error handling.
 
