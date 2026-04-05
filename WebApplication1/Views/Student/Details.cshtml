@@ -1,0 +1,67 @@
+﻿@model Student
+
+<h1>Student Details</h1>
+
+<div class="card" style="width: 18rem;">
+    <img src="~/images/@(Model.Image ?? "defualt.png")" class="card-img-top" alt="@Model.Name" style="height:250px; object-fit:cover;">
+
+        <div class="card-body">
+            <h5 class="card-title">@Model.Name</h5>
+            <p class="card-text">
+                Student information card
+            </p>
+        </div>
+
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>SSN:</strong> @Model.SSN</li>
+            <li class="list-group-item"><strong>Age:</strong> @Model.Age</li>
+            <li class="list-group-item"><strong>Department:</strong> @Model.Department.Name</li>
+            <li class="list-group-item"><strong>Email:</strong> @Model.Email</li>
+            <li class="list-group-item"><strong>Address:</strong> @Model.Address</li>
+            <li class="list-group-item"><strong>Grade:</strong> @Model.Grade</li>
+            @if(Model.StudCourses?.Count >0){
+            <li class="list-group-item">
+                <strong>Courses:</strong>
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Min</th>
+                                <th>Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var sc in Model.StudCourses)
+                            {
+                                var rowColor = sc.Grade >= (sc.Course.Mindegree ?? 0) ? "green" : "red";
+                                <tr>
+                                    <td>@sc.Crs_Id</td>
+                                    <td>@sc.Course.Name</td>
+                                    <td>@sc.Course.Mindegree</td>
+                                    <td style="color:@rowColor; font-weight:bold;">@sc.Grade</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+            }
+      else
+        {
+                <li class="list-group-item">
+                    <strong>Courses:</strong>
+                    <br />
+                    <strong class="bg-warning">There are no courses taken yet</strong></li>
+            
+        }
+            
+        </ul>
+
+        <div class="card-body">
+            <a asp-action="GetAll" asp-controller="Student" class="card-link">Back to List</a>
+            <a asp-action="Edit" asp-controller="Student" asp-route-id="@Model.SSN" class="card-link">Edit</a>
+            @* <a href="/Student/Edit/@Model.SSN" class="card-link">Edit</a> *@
+        </div>
+    </div>

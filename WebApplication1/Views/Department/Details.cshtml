@@ -1,0 +1,39 @@
+﻿@model DepartmentDetailsViewModel
+
+<div class="card" style="width: 18rem;">
+
+        <div class="card-body">
+            <h5 class="card-title">@Model.Name</h5>
+            <p class="card-text">
+               Department information card
+            </p>
+        </div>
+
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Dept_Id:</strong> @Model.Dept_Id</li>
+            <li class="list-group-item"><strong>Location:</strong> @Model.Location</li>
+            <li class="list-group-item"><strong>PhoneNumber:</strong> @Model.PhoneNumber</li>
+            <li class="list-group-item">
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Students
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    @foreach (var std_name in Model.Students_Names)
+                    {
+                        <li><a class="dropdown-item" href="#">@std_name</a></li>
+                    }
+                </ul>
+            </div>
+            
+            </li>
+        </ul>
+
+        <div class="card-body">
+            <a href="/Department/GetAll" class="card-link">Back to List</a>
+            <a class="link-dark" asp-action="Edit" asp-controller="Department" asp-route-id="@Model.Dept_Id">Edit</a>
+
+            @* <a href="/Student/Edit/@Model.SSN" class="card-link">Edit</a> *@
+        </div>
+    </div>

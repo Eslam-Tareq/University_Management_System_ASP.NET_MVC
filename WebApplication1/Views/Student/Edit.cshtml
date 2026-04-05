@@ -1,0 +1,30 @@
+﻿@model StudentUpdateViewModel
+
+@* <form action="/Student/New" method="post" enctype="multipart/form-data"> *@
+<h1>Update Student</h1>
+
+<form asp-action="Edit" asp-controller="Student" enctype="multipart/form-data">
+    <div class="form-group">
+        <input type="hidden" class="form-control" asp-for="SSN" />
+        <input type="hidden" class="form-control" asp-for="Image" />
+
+    </div>
+    <partial name="_StudentForm" model="Model" />
+
+                    <div class="form-group">
+                        <label asp-for="Image"></label>
+                        <img  src="~/images/@(Model.Image ?? "defualt.png")" class="card-img-top form-control" alt="@Model.Name" style="height:250px;width:250px">
+                       
+
+                        </div>
+                    
+                        <br />
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+
+
+    @section Scripts {
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js"></script>
+    }

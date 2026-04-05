@@ -1,0 +1,46 @@
+﻿@model List<Student>
+<partial name="_SuccessToast"/>
+<h1>Students</h1>
+
+<a class="btn btn-outline-primary" href="/Student/New">new</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Age</th>
+            <th scope="col">Dept_Id</th>
+            <th scope="col">Address</th>
+            <th scope="col">Image</th>
+            <th scope="col">Grade</th>
+            <th scope="col">Details</th>
+            <th scope="col">Edit</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                
+                <th scope="row">@s.SSN</th>
+                <td>@s.Name</td>
+                <td>@s.Email</td>
+                <td>@s.Age</td>
+                <td>@s.Dept_Id</td>
+                <td>@s.Address</td>
+                <td>@(s.Image ?? "defualt.png")</td>
+                <td>@s.Grade</td>
+                <td><a class="link-dark" asp-action="Details" asp-controller="Student" asp-route-id="@s.SSN">details</a>
+                    </td>
+                    <td><a class="link-dark" asp-action="Edit" asp-controller="Student" asp-route-id="@s.SSN">Edit</a>
+                        </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+ 

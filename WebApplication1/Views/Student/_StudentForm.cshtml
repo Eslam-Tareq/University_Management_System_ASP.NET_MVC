@@ -1,0 +1,59 @@
+﻿@model StudentFormViewModel
+@{
+    SelectList depts = new SelectList(ViewBag.Departs, "Dept_Id", "Name");
+}
+
+<div class="form-group">
+    <label asp-for="Name"></label>
+    <input class="form-control" asp-for="Name">
+    <span asp-validation-for="Name" class="text-danger"></span>
+       
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Age"></label>
+        <input class="form-control" asp-for="Age">
+            <span asp-validation-for="Age" class="text-danger"></span>
+
+        </div>
+        <div class="form-group">
+            <label asp-for="Address"></label>
+            <input class="form-control" asp-for="Address" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+
+
+        </div>
+        <div class="form-group">
+            <label asp-for="Dept_Id"></label>
+       
+            <select asp-for="Dept_Id"
+                    asp-items="depts"
+                    class="form-control">
+                <option value="0">-- Select Department --</option>
+
+            </select>
+            <span asp-validation-for="Dept_Id" class="text-danger"></span>
+
+
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input class="form-control" asp-for="Email">
+                <span asp-validation-for="Email" class="text-danger"></span>
+
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Grade"></label>
+                <input class="form-control" asp-for="Grade">
+                    <span asp-validation-for="Grade" class="text-danger"></span>
+
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImageFile"></label>
+                    <input class="form-control" asp-for="ImageFile" accept="image/*">
+                        <span asp-validation-for="ImageFile" class="text-danger"></span>
+
+       
+                    </div>

@@ -1,0 +1,15 @@
+﻿@model CourseUpdateViewModel
+
+<h1>Update New Course</h1>
+
+<form asp-action="Edit" asp-controller="Course" asp-route-id="@Model.Crs_Id" method="post">
+    <input type="hidden" asp-for="Crs_Id"/>
+    <partial name="_CourseForm" model="Model" />
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js"></script>
+}

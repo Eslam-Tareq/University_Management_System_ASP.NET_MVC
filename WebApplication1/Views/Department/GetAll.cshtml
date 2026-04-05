@@ -1,0 +1,39 @@
+﻿@model List<Department>
+<partial name="_SuccessToast" />
+
+<h1>Departments</h1>
+
+<a class="btn btn-outline-primary" asp-action="New" asp-controller="Department">new</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">PhoneNumber</th>
+            <th scope="col">Location</th>
+            <th scope="col">Details</th>
+            <th scope="col">Edit</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                
+                <th scope="row">@s.Dept_Id</th>
+                <td>@s.Name</td>
+                <td>@s.PhoneNumber</td>
+                <td>@s.Location</td>
+              
+                <td>
+                    <a class="link-dark" asp-action="Details" asp-controller="Department" asp-route-id="@s.Dept_Id">details</a>
+                    </td>
+                        <td><a class="link-dark" asp-action="Edit" asp-controller="Department" asp-route-id="@s.Dept_Id">Edit</a> </td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
